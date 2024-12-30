@@ -384,8 +384,11 @@ function createChunks(arr, chunkSize) {
  *    generateOdds(2) => [ 1, 3 ]
  *    generateOdds(5) => [ 1, 3, 5, 7, 9 ]
  */
-function generateOdds(/* len */) {
-  throw new Error('Not implemented');
+function generateOdds(len) {
+  const arr = Array(len).fill(0);
+
+  const newArr = arr.map((_, i) => i + i + 1);
+  return newArr;
 }
 
 /**
@@ -400,8 +403,9 @@ function generateOdds(/* len */) {
  *   getElementByIndices(['one','two','three'], [2]) => 'three'  (arr[2])
  *   getElementByIndices([[[ 1, 2, 3]]], [ 0, 0, 1 ]) => 2        (arr[0][0][1])
  */
-function getElementByIndices(/* arr, indices */) {
-  throw new Error('Not implemented');
+function getElementByIndices(arr, indices) {
+  const newArr = indices.reduce((acc, cur) => acc[cur], arr);
+  return newArr;
 }
 
 /**
@@ -416,8 +420,9 @@ function getElementByIndices(/* arr, indices */) {
  *  getFalsyValuesCount([ -1, 'false', null, 0 ]) => 2
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
-function getFalsyValuesCount(/* arr */) {
-  throw new Error('Not implemented');
+function getFalsyValuesCount(arr) {
+  const newArr = arr.filter((e) => Boolean(e) === false);
+  return newArr.length;
 }
 
 /**
@@ -438,8 +443,20 @@ function getFalsyValuesCount(/* arr */) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  if (n === 1) {
+    return [[1]];
+  }
+
+  const arr = Array(n)
+    .fill()
+    .map((_, index) =>
+      Array(n)
+        .fill(0)
+        .map((__, i) => (i === index ? 1 : 0))
+    );
+
+  return arr;
 }
 
 /**
@@ -453,8 +470,12 @@ function getIdentityMatrix(/* n */) {
  *    getIndicesOfOddNumbers([2, 4, 6, 8, 10]) => []
  *    getIndicesOfOddNumbers([11, 22, 33, 44, 55]) => [0, 2, 4]
  */
-function getIndicesOfOddNumbers(/* numbers */) {
-  throw new Error('Not implemented');
+function getIndicesOfOddNumbers(numbers) {
+  const newArr = numbers
+    .map((e, index) => (e % 2 !== 0 ? index : false))
+    .filter((e) => e !== false);
+
+  return newArr;
 }
 
 /**
